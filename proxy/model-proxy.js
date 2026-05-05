@@ -16,8 +16,8 @@ const MODEL_REMAP = {
         'claude-haiku-4-5-20251001':  'deepseek-v4-flash',
     },
     openrouter: {
-        'claude-opus-4-6':    'deepseek/deepseek-v4-pro',
-        'claude-opus-4-7':    'deepseek/deepseek-v4-pro',
+        'claude-opus-4-6':    'deepseek/deepseek-v4-flash',
+        'claude-opus-4-7':    'deepseek/deepseek-v4-flash',
         'claude-sonnet-4-6':  'deepseek/deepseek-v4-flash',
         'claude-sonnet-4-5-20250929': 'deepseek/deepseek-v4-flash',
         'claude-haiku-4-5-20251001':  'deepseek/deepseek-v4-flash',

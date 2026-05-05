@@ -11,7 +11,7 @@ DEEPSEEK_URL="https://api.deepseek.com/anthropic"
 OPENROUTER_URL="https://openrouter.ai/api"
 FIREWORKS_URL="https://api.fireworks.ai/inference"
 
-BACKEND="${CHEAPCLAUDE_DEFAULT_BACKEND:-ds}"
+BACKEND="${CHEAPCLAUDE_DEFAULT_BACKEND:-or}"
 ACTION="launch"
 SWITCH_BACKEND=""
 PROXY_PID=""
@@ -57,8 +57,10 @@ resolve_backend() {
             key="${OPENROUTER_API_KEY:-}"
             [[ -z "$key" ]] && { echo "ERROR: OPENROUTER_API_KEY not set" >&2; exit 1; }
             url="$OPENROUTER_URL"
-            opus="deepseek/deepseek-v4-pro"; sonnet="deepseek/deepseek-v4-pro"
-            haiku="deepseek/deepseek-v4-pro"; subagent="deepseek/deepseek-v4-pro"
+            # opus="deepseek/deepseek-v4-pro"; sonnet="deepseek/deepseek-v4-pro"
+            # haiku="deepseek/deepseek-v4-pro"; subagent="deepseek/deepseek-v4-pro"
+            opus="deepseek/deepseek-v4-pro"; sonnet="deepseek/deepseek-v4-flash"
+            haiku="deepseek/deepseek-v4-pro"; subagent="deepseek/deepseek-v4-flash"
             ;;
         fw|fireworks)
             key="${FIREWORKS_API_KEY:-}"
@@ -175,7 +177,7 @@ run_benchmark() {
         local url="" key="" model=""
         case "$name" in
             deepseek)   url="$DEEPSEEK_URL"; key="${DEEPSEEK_API_KEY:-}"; model="deepseek-v4-pro" ;;
-            openrouter) url="$OPENROUTER_URL"; key="${OPENROUTER_API_KEY:-}"; model="deepseek/deepseek-v4-pro" ;;
+            openrouter) url="$OPENROUTER_URL"; key="${OPENROUTER_API_KEY:-}"; model="deepseek/deepseek-v4-flash" ;;
             fireworks)  url="$FIREWORKS_URL"; key="${FIREWORKS_API_KEY:-}"; model="accounts/fireworks/models/deepseek-v4-pro" ;;
         esac
         if [[ -z "$key" ]]; then echo "  $name: SKIP (no key)"; continue; fi
