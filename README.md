@@ -85,7 +85,8 @@ OpenRouter is the default backend (`CHEAPCLAUDE_DEFAULT_BACKEND=or`). You can ch
 
 | Backend | Flag | Input/M | Output/M | Notes |
 |---|---|---|---|---|
-| **OpenRouter** (default) | `-b or` | $0.44 | $0.87 | US servers, best latency from US/EU |
+| **OpenRouter DeepSeek Pro** | `-b or` | $0.49 | $2.26 | US servers, best latency from US/EU |
+| **OpenRouter DeepSeek Flash** (default) | `-b or` | $0.14 | $0.28 | US servers, best latency from US/EU |
 | **DeepSeek** | `-b ds` | $0.44 | $0.87 | Direct to DeepSeek; auto context caching (120x cheaper on cache hits) |
 | **Fireworks AI** | `-b fw` | $1.74 | $3.48 | Fastest inference, US servers |
 | **Anthropic** | `-b anthropic` | $3.00 | $15.00 | Original Claude Opus — use for hard problems |
