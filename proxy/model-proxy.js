@@ -9,8 +9,8 @@ const REQUEST_TIMEOUT_MS = 5 * 60 * 1000; // 5 min per request
 
 const MODEL_REMAP = {
     deepseek: {
-        'claude-opus-4-6':    'deepseek-v4-pro',
-        'claude-opus-4-7':    'deepseek-v4-pro',
+        'claude-opus-4-6':    'deepseek-v4-flash',
+        'claude-opus-4-7':    'deepseek-v4-flash',
         'claude-sonnet-4-6':  'deepseek-v4-flash',
         'claude-sonnet-4-5-20250929': 'deepseek-v4-flash',
         'claude-haiku-4-5-20251001':  'deepseek-v4-flash',
@@ -22,6 +22,10 @@ const MODEL_REMAP = {
         'claude-sonnet-4-5-20250929': 'deepseek/deepseek-v4-flash',
         'claude-haiku-4-5-20251001':  'deepseek/deepseek-v4-flash',
     },
+};
+
+const PROVIDER_ROUTING = {
+    openrouter: { provider: { order: ['AtlasCloud'], allow_fallbacks: false } },
 };
 
 const PRICING_PER_M = {
@@ -315,16 +319,19 @@ export function startModelProxy({ targetUrl, apiKey, startPort = 3200, backends,
             clientReq.on('end', () => {
                 let body = Buffer.concat(chunks);
 
-                // Remap Anthropic model names to backend-specific names
-                if (isModelCall && MODEL_REMAP[state.mode]) {
+                // Remap Anthropic model names and inject provider routing
+                if (isModelCall && (MODEL_REMAP[state.mode] || PROVIDER_ROUTING[state.mode])) {
                     try {
                         const parsed = JSON.parse(body);
-                        const mapped = MODEL_REMAP[state.mode][parsed.model];
+                        const mapped = MODEL_REMAP[state.mode]?.[parsed.model];
                         if (mapped) {
                             console.log(`[MODEL-PROXY] #${reqId} model remap: ${parsed.model} → ${mapped}`);
                             parsed.model = mapped;
-                            body = Buffer.from(JSON.stringify(parsed));
                         }
+                        if (PROVIDER_ROUTING[state.mode]) {
+                            Object.assign(parsed, PROVIDER_ROUTING[state.mode]);
+                        }
+                        body = Buffer.from(JSON.stringify(parsed));
                     } catch { /* not JSON or parse error, pass through */ }
                 }
 
