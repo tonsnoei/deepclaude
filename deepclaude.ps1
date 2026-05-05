@@ -47,15 +47,15 @@ $Providers = @{
         name = "DeepSeek (direct)"
         url = "https://api.deepseek.com/anthropic"
         key = $DeepSeekKey; keyName = "DEEPSEEK_API_KEY"
-        opus = "deepseek-v4-pro"; sonnet = "deepseek-v4-pro"
+        opus = "deepseek-v4-flash"; sonnet = "deepseek-v4-flash"
         haiku = "deepseek-v4-flash"; subagent = "deepseek-v4-flash"
     }
     or = @{
         name = "OpenRouter"
         url = "https://openrouter.ai/api"
         key = $OpenRouterKey; keyName = "OPENROUTER_API_KEY"
-        opus = "deepseek/deepseek-v4-pro"; sonnet = "deepseek/deepseek-v4-pro"
-        haiku = "deepseek/deepseek-v4-pro"; subagent = "deepseek/deepseek-v4-pro"
+        opus = "deepseek/deepseek-v4-flash"; sonnet = "deepseek/deepseek-v4-flash"
+        haiku = "deepseek/deepseek-v4-flash"; subagent = "deepseek/deepseek-v4-flash"
     }
     fw = @{
         name = "Fireworks AI"
