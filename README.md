@@ -2,7 +2,7 @@
 
 This is a fork of https://github.com/aattaran/deepclaude
 
-Run Claude Code's full autonomous agent loop with **DeepSeek V4 Flash** — same tools, same UX, dramatically lower cost.
+Run Claude Code's full autonomous agent loop with [openrouter.ai](https://openrouter.ai) **DeepSeek V4 Flash** - same tools, same UX, dramatically lower cost.
 
 ![Remote control running DeepSeek V4 Flash in the browser](screenshots/remote-control-deepseek.png)
 
