@@ -1,5 +1,7 @@
 # deepclaude
 
+This is a fork of https://github.com/aattaran/deepclaude
+
 Run Claude Code's full autonomous agent loop with **DeepSeek V4 Flash** — same tools, same UX, dramatically lower cost.
 
 ![Remote control running DeepSeek V4 Flash in the browser](screenshots/remote-control-deepseek.png)
@@ -14,7 +16,7 @@ Your terminal
         └── API calls → DeepSeek V4 Flash via OpenRouter  ($0.28/M, not $15/M)
 ```
 
-DeepSeek V4 Flash scores 96.4% on LiveCodeBench. For 80% of coding tasks it's comparable to Claude Opus. You can switch back to Anthropic mid-session for the hard 20%.
+DeepSeek V4 Flash scores 79.0% on SWE-Bench. For coding tasks it's 80% comparable to Claude Sonnet 4.6 (79.6%) and Claude Opus 4.6 (80.8%). You can switch back to Anthropic mid-session for the hard 20%.
 
 ## Quick start
 
